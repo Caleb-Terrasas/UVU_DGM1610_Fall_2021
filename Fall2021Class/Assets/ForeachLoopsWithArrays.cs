@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class ForeachLoopsWithArrays : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    string[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+    Array.Sort(cars);
+    foreach (string i in cars)
     {
-        
+        Console.Writeline(i);
     }
-
-    // Update is called once per frame
-    void Update()
+}
+{
+    string[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+    foreach (string i in cars)
     {
-        
+        Console.Writeline(i);
     }
 }
