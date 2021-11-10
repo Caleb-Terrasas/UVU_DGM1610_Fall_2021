@@ -7,6 +7,7 @@ public class PlayerControllerX : MonoBehaviour
     private Rigidbody playerRb;
     private float speed = 500;
     private GameObject focalPoint;
+    private float speedBoost = 10;
 
     public bool hasPowerup;
     public GameObject powerupIndicator;
@@ -14,6 +15,8 @@ public class PlayerControllerX : MonoBehaviour
 
     private float normalStrength = 10; // how hard to hit enemy without powerup
     private float powerupStrength = 25; // how hard to hit enemy with powerup
+
+    public ParticleSystem smokeParticle;
     
     void Start()
     {
@@ -30,6 +33,12 @@ public class PlayerControllerX : MonoBehaviour
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
 
+        // Player speed boost if they press space
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playerRb.AddForce(focalPoint.transform.forward * speedBoost, ForceMode.Impulse);
+            smokeParticle.Play();
+        }
     }
 
     // If Player collides with powerup, activate powerup
