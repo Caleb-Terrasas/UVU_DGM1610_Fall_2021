@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float gravityModifier;
 
+    //Projectile control variables
+    public GameObject projectilePrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,12 @@ public class PlayerController : MonoBehaviour
         if(transform.position.z != zPosition)
         {
             transform.position = new Vector3 (transform.position.x, transform.position.y, zPosition);
+        }
+
+        //Player projectile controls
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
         }
     }
 }
